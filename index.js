@@ -37,7 +37,7 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if (text.toLowerCase().match(/^(uptime|identify yourself|who are you|what is your name|what is your namess?)$/)) {
+            if (text.toLowerCase().match(/^(uptime|identify yourself|who are you|what is your name|what is your name?)$/)) {
               var hostname = os.hostname()
               var uptime = formatUptime(process.uptime())
               sendTextMessage(sender, ':robot_face: I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')

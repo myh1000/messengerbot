@@ -37,7 +37,7 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
           text = event.message.text
-          if (text.toLowerCase() === '@same') {{
+          if (text.toLowerCase() === '@same') {
               if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
                 var hostname = os.hostname()
                 var uptime = formatUptime(process.uptime())
@@ -48,7 +48,6 @@ app.post('/webhook/', function (req, res) {
                   sendTextMessage(sender, text.substring(0, 200))
                   continue
               }
-              // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
               sendTextMessage(sender, text.substring(0, 200) + ": not same")
             }
         }

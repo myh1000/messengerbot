@@ -36,7 +36,7 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-          if (event.message.text.toLowerCase() === '@same') {
+          if (getFirstWord(event.message.text).toLowerCase() === '@same') {
               text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
               if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
                 var hostname = os.hostname()
@@ -145,6 +145,13 @@ function formatUptime(uptime) {
 
     uptime = uptime + ' ' + unit;
     return uptime;
+}
+
+function getFirstWord(str) {
+        if (str.indexOf(' ') === -1)
+            return str;
+        else
+            return str.substr(0, str.indexOf(' '));
 }
 
 var token = "CAAJyRJlBLqEBAOdjcrcnZBtfYuyuJFyvQqSADBbWFj8baZCpLTHbKbc6TAtYjJHX51QWuO3OlP48zmzzMa5NHkfJAmoZBKtVE5qsZBsqhpICTjnzxHZCYA7vTkGeDOrXFgrqv4RZCkD4T0o9pcgGMt8pfqeAH601PZATXspCgn4ZCiTcjchcvmYHYs6ImQcv4FIZD"

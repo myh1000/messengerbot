@@ -149,7 +149,7 @@ function formatUptime(uptime) {
         unit = unit + 's';
     }
 
-    uptime = uptime + ' ' + unit;
+    uptime = +uptime.toFixed(2); + ' ' + unit;
     return uptime;
 }
 

@@ -38,7 +38,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
           if (event.message.text.toLowerCase() === '@same') {
             console.log('what happened')
-              text = substr(event.message.text.indexOf(" ") + 1)
+              // text = substr(event.message.text.indexOf(" ") + 1)
               console.log(text)
               if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
                 var hostname = os.hostname()

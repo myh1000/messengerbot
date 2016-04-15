@@ -36,19 +36,21 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-            text = event.message.text
-            if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
-              var hostname = os.hostname()
-              var uptime = formatUptime(process.uptime())
-              sendTextMessage(sender, ':robot_face: I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
-              continue
-            }
-            if (text.toLowerCase() === 'same') {
-                sendTextMessage(sender, text.substring(0, 200))
+          text = event.message.text
+          if (text.toLowerCase() === '@same') {{
+              if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
+                var hostname = os.hostname()
+                var uptime = formatUptime(process.uptime())
+                sendTextMessage(sender, ':robot_face: I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
                 continue
+              }
+              if (text.toLowerCase() === 'same') {
+                  sendTextMessage(sender, text.substring(0, 200))
+                  continue
+              }
+              // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+              sendTextMessage(sender, text.substring(0, 200) + ": not same")
             }
-            // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-            sendTextMessage(sender, text.substring(0, 200) + ": not same")
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)

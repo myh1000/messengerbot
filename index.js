@@ -36,7 +36,8 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-          if (getFirstWord(event.message.text).toLowerCase() === '@same') {
+          firstWord = getFirstWord(event.message.text).toLowerCase()
+          if (firstWord === '@same') {
               text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
               if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
                 var hostname = os.hostname()
@@ -52,7 +53,7 @@ app.post('/webhook/', function (req, res) {
             }
             continue
         }
-        else if (getFirstWord(event.message.text) === ':|]') {
+        else if (firstWord === ':|]') {
           sendTextMessage(sender, ':|]')
           continue
         }

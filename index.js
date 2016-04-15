@@ -36,26 +36,26 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-          firstWord = getFirstWord(event.message.text).toLowerCase()
-          if (firstWord === '@same') {
-              text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
-              if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
-                var hostname = os.hostname()
-                var uptime = formatUptime(process.uptime())
-                sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
-                continue
-              }
-              if (['same', ':|]', 'hi', 'hello'].indexOf(text.toLowerCase()) >= 0) {
-                  sendTextMessage(sender, text.substring(0, 200))
+            firstWord = getFirstWord(event.message.text).toLowerCase()
+            if (firstWord === '@same') {
+                text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
+                if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
+                  var hostname = os.hostname()
+                  var uptime = formatUptime(process.uptime())
+                  sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
                   continue
-              }
-              sendTextMessage(sender, text.substring(0, 200) + ": not same")
+                }
+                if (['same', ':|]', 'hi', 'hello'].indexOf(text.toLowerCase()) >= 0) {
+                    sendTextMessage(sender, text.substring(0, 200))
+                    continue
+                }
+                sendTextMessage(sender, text.substring(0, 200) + ": not same")
+                continue
             }
-            continue
-        }
-        else if (firstWord === ':|]') {
-          sendTextMessage(sender, ':|]')
-          continue
+            else if (firstWord === ':|]') {
+              sendTextMessage(sender, ':|]')
+              continue
+            }
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)

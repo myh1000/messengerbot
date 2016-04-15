@@ -50,6 +50,10 @@ app.post('/webhook/', function (req, res) {
               }
               sendTextMessage(sender, text.substring(0, 200) + ": not same")
             }
+            continue
+        }
+        else if (getFirstWord(event.message.text) === ':|]') {
+          sendTextMessage(sender, text.substring(0, 200))
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)

@@ -52,10 +52,10 @@ app.post('/webhook/', function (req, res) {
             }
             continue
         }
-        // else if (getFirstWord(event.message.text) === ':|]') {
-        //   sendTextMessage(sender, ':|]')
-        //   continue
-        // }
+        else if (getFirstWord(event.message.text) === ':|]') {
+          sendTextMessage(sender, ':|]')
+          continue
+        }
         if (event.postback) {
             text = JSON.stringify(event.postback)
             sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)

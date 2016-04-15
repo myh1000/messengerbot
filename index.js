@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
               if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
                 var hostname = os.hostname()
                 var uptime = formatUptime(process.uptime())
-                sendTextMessage(sender, ':robot_face: I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
+                sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
                 continue
               }
               if (text.toLowerCase() === 'same') {

@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
                   sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
                   continue
                 }
-                if (['same', ':|]', 'hi', 'hello', 'gn'].indexOf(text.toLowerCase()) >= 0) {
+                if (['same', ':|]', 'hi', 'hello', 'gn', 'goodnight', 'night', 'nite'].indexOf(text.toLowerCase()) >= 0) {
                     sendTextMessage(sender, text.substring(0, 200))
                     continue
                 }

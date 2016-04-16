@@ -52,8 +52,8 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, text.substring(0, 200) + ": not same")
                 continue
             }
-            else if (firstWord === ':|]') {
-              sendTextMessage(sender, ':|]')
+            else if (event.message.text === ':|]' || event.message.text === 'same') {
+              sendTextMessage(sender, event.message.text.substring(0, 200))
               continue
             }
         }

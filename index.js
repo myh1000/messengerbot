@@ -49,6 +49,8 @@ app.post('/webhook/', function (req, res) {
                     sendTextMessage(sender, text.substring(0, 200))
                     continue
                 }
+                if (event.message.text === 'dank') sendTextMessage(sender, "memes")
+                continue
                 sendTextMessage(sender, text.substring(0, 200) + ": not same")
                 continue
             }

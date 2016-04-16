@@ -55,6 +55,7 @@ app.post('/webhook/', function (req, res) {
                   continue
                 }
                 if (getFirstWord(text) === 'math') {
+                  console.log("mathjs called")
                   sendTextMessage(sender, math.eval((text.substr(event.message.text.indexOf(" ") + 1))))
                   continue
                 }

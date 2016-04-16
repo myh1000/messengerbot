@@ -1,7 +1,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
-var os = require('os');
+var os = require('os')
+var math = require('mathjs')
 var app = express()
 
 app.set('port', (process.env.PORT || 5000))
@@ -51,6 +52,10 @@ app.post('/webhook/', function (req, res) {
                 }
                 if (text === 'dank') {
                   sendTextMessage(sender, "memes")
+                  continue
+                }
+                if (getFirstWord(text) === 'math') {
+                  sendTextMessage(sender, math.eval(text.substr(event.message.text.indexOf(" ") + 1)))
                   continue
                 }
                 sendTextMessage(sender, text.substring(0, 200) + ": not same")

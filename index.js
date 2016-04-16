@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
                     sendTextMessage(sender, text.substring(0, 200))
                     continue
                 }
-                if (event.message.text === 'dank') {
+                if (text === 'dank') {
                   sendTextMessage(sender, "memes")
                   continue
                 }

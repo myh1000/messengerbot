@@ -48,10 +48,10 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
             continue
           }
-          if (getFirstWord(messageLow) == 'image') {
-            sendImageMessage(sender, messageLow.substr(messageLow.indexOf(" ") + 1))
-            continue
-          }
+          // if (getFirstWord(messageLow) == 'image') {
+          //   sendImageMessage(sender, messageLow.substr(messageLow.indexOf(" ") + 1))
+          //   continue
+          // }
           sendTextMessage(sender, message.substring(0, 200))
             // firstWord = getFirstWord(event.message.text).toLowerCase()
             // if (firstWord === '@same') {
@@ -86,26 +86,27 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
-function sendTextMessage(sender, text) {
-    messageData = {
-        text:text
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
+// function sendTextMessage(sender, text) {
+//     messageData = {
+//         text:text
+//     }
+//     request({
+//         url: 'https://graph.facebook.com/v2.6/me/messages',
+//         qs: {access_token:token},
+//         method: 'POST',
+//         json: {
+//             recipient: {id:sender},
+//             message: messageData,
+//         }
+//     }, function(error, response, body) {
+//         if (error) {
+//             console.log('Error sending messages: ', error)
+//         } else if (response.body.error) {
+//             console.log('Error: ', response.body.error)
+//         }
+//     })
+// }
+
 function sendImageMessage(sender, link) {
   if (link != null) {
     messageData = {

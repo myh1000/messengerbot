@@ -37,7 +37,7 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
           message = event.message.text.toLowerCase()
-          sendTextMessage(sender, text.substring(0, 200))
+          sendTextMessage(sender, message.substring(0, 200))
           continue
             // firstWord = getFirstWord(event.message.text).toLowerCase()
             // if (firstWord === '@same') {

@@ -36,12 +36,13 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-          message = event.message.text.toLowerCase()
-          if (message == 'postback') {
+          message = event.message.text
+          messageLow = event.message.text.toLowerCase()
+          if (messageLow == 'postback') {
             sendGenericMessage(sender)
             continue
           }
-          if (message == 'uptime') {
+          if (messageLow == 'uptime') {
             var hostname = os.hostname()
             var uptime = formatUptime(process.uptime())
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')

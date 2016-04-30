@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
             continue
           }
           if (messageLow == 'same') {
-            sendImageMessage(sender, null)
+            sendImageMessage(sender, 'image')
             continue
           }
           if (getFirstWord(messageLow) == 'image') {

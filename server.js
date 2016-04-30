@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
             sendGenericMessage(sender)
             continue
           }
-          if (message = 'uptime') {
+          if (message == 'uptime') {
             var hostname = os.hostname()
             var uptime = formatUptime(process.uptime())
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')

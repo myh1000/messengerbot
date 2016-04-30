@@ -108,10 +108,10 @@ function sendTextMessage(sender, text) {
 }
 function sendImageMessage(sender) {
   messageData = {
-    "attachment":{
-      "type":"image",
-      "payload":{
-        "url":"https://petersapparel.com/img/shirt.png"
+    "attachment": {
+        "type": "image",
+        "payload": {
+        "url":"https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
       }
     }
   }

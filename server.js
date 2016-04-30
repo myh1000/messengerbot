@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
             continue
           }
           if (getFirstWord(messageLow) == 'image') {
-            sendImageMessage(sender, messageLow.substr(messageLow.indexOf(" ") + 1))
+            sendImageMessage(sender, message.substring(message.indexOf(" ") + 1))
             continue
           }
           sendTextMessage(sender, message.substring(0, 200))
@@ -108,7 +108,7 @@ function sendTextMessage(sender, text) {
 }
 
 function sendImageMessage(sender, link) {
-  if (link != null) {
+  if (link == "k") {
     messageData = {
       "attachment": {
           "type": "image",

@@ -48,6 +48,10 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
             continue
           }
+          if (messageLow == 'same') {
+            sendTextMessage(sender, 'no u')
+            continue
+          }
           sendTextMessage(sender, message.substring(0, 200))
             // firstWord = getFirstWord(event.message.text).toLowerCase()
             // if (firstWord === '@same') {

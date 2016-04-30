@@ -107,12 +107,12 @@ function sendTextMessage(sender, text) {
     })
 }
 function sendImageMessage(sender, link) {
-  if (link == null) {}
+  if (link != null) {
     messageData = {
       "attachment": {
           "type": "image",
           "payload": {
-          "url":"https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
+          "url":link
         }
       }
     }
@@ -122,7 +122,7 @@ function sendImageMessage(sender, link) {
       "attachment": {
           "type": "image",
           "payload": {
-          "url":link
+          "url":https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
         }
       }
     }

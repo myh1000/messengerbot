@@ -36,30 +36,33 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-            firstWord = getFirstWord(event.message.text).toLowerCase()
-            if (firstWord === '@same') {
-                text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
-                if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
-                  var hostname = os.hostname()
-                  var uptime = formatUptime(process.uptime())
-                  sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
-                  continue
-                }
-                if (['same', ':|]', 'hi', 'hello', 'gn', 'goodnight', 'night', 'nite'].indexOf(text.toLowerCase()) >= 0) {
-                    sendTextMessage(sender, text.substring(0, 200))
-                    continue
-                }
-                if (text === 'dank') {
-                  sendTextMessage(sender, "memes")
-                  continue
-                }
-                sendTextMessage(sender, text.substring(0, 200) + ": not same")
-                continue
-            }
-            else if (event.message.text === ':|]' || event.message.text.toLowerCase() === 'same') {
-              sendTextMessage(sender, event.message.text.substring(0, 200))
-              continue
-            }
+          message = event.message.text.toLowerCase()
+          sendTextMessage(sender, text.substring(0, 200))
+          continue
+            // firstWord = getFirstWord(event.message.text).toLowerCase()
+            // if (firstWord === '@same') {
+            //     text = event.message.text.substr(event.message.text.indexOf(" ") + 1)
+            //     if (['uptime', 'identify yourself', 'who are you', 'what is your name', 'what is your name?'].indexOf(text.toLowerCase()) >= 0) {
+            //       var hostname = os.hostname()
+            //       var uptime = formatUptime(process.uptime())
+            //       sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
+            //       continue
+            //     }
+            //     if (['same', ':|]', 'hi', 'hello', 'gn', 'goodnight', 'night', 'nite'].indexOf(text.toLowerCase()) >= 0) {
+            //         sendTextMessage(sender, text.substring(0, 200))
+            //         continue
+            //     }
+            //     if (text === 'dank') {
+            //       sendTextMessage(sender, "memes")
+            //       continue
+            //     }
+            //     sendTextMessage(sender, text.substring(0, 200) + ": not same")
+            //     continue
+            // }
+            // else if (event.message.text === ':|]' || event.message.text.toLowerCase() === 'same') {
+            //   sendTextMessage(sender, event.message.text.substring(0, 200))
+            //   continue
+            // }
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)

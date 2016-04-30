@@ -48,6 +48,10 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
             continue
           }
+          if (messageLow == 'same') {
+            sendImageMessage(sender)
+            continue
+          }
           if (getFirstWord(messageLow) == 'image') {
             sendImageMessage(sender, message.substring(message.indexOf(" ") + 1))
             continue

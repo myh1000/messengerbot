@@ -48,8 +48,8 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
             continue
           }
-          if (messageLow == 'same') {
-            sendImageMessage(sender)
+          if (getFirstWord(messageLow) == 'image') {
+            sendImageMessage(sender, messageLow.substr(messageLow.indexOf(" ") + 1))
             continue
           }
           sendTextMessage(sender, message.substring(0, 200))
@@ -106,12 +106,24 @@ function sendTextMessage(sender, text) {
         }
     })
 }
-function sendImageMessage(sender) {
-  messageData = {
-    "attachment": {
-        "type": "image",
-        "payload": {
-        "url":"https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
+function sendImageMessage(sender, link) {
+  if (link == null) {}
+    messageData = {
+      "attachment": {
+          "type": "image",
+          "payload": {
+          "url":"https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
+        }
+      }
+    }
+  }
+  else {
+    messageData = {
+      "attachment": {
+          "type": "image",
+          "payload": {
+          "url":link
+        }
       }
     }
   }

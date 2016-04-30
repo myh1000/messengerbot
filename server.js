@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, 'no u')
             continue
           }
-          sendTextMessage(sender, message.substring(0, 200))
+          sendTextMessage(sender, event.message)
             // firstWord = getFirstWord(event.message.text).toLowerCase()
             // if (firstWord === '@same') {
             //     text = event.message.text.substr(event.message.text.indexOf(" ") + 1)

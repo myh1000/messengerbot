@@ -40,6 +40,7 @@ app.post('/webhook/', function (req, res) {
           if (message == 'postback') {
             sendGenericMessage(sender)
           }
+          if (message = 'uptime')
           else {
             sendTextMessage(sender, message.substring(0, 200))
             continue

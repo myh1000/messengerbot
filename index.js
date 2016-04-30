@@ -39,12 +39,15 @@ app.post('/webhook/', function (req, res) {
           message = event.message.text.toLowerCase()
           if (message == 'postback') {
             sendGenericMessage(sender)
-          }
-          if (message = 'uptime')
-          else {
-            sendTextMessage(sender, message.substring(0, 200))
             continue
           }
+          if (message = 'uptime') {
+            var hostname = os.hostname()
+            var uptime = formatUptime(process.uptime())
+            sendTextMessage(sender, ':|] I am a bot named <@' + "same"+'>. I have been running for ' + uptime + ' on ' + hostname + '.')
+            continue
+          }
+          sendTextMessage(sender, message.substring(0, 200))
             // firstWord = getFirstWord(event.message.text).toLowerCase()
             // if (firstWord === '@same') {
             //     text = event.message.text.substr(event.message.text.indexOf(" ") + 1)

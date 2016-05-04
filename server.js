@@ -145,6 +145,7 @@ function sendImageMessage(sender, link) {
           console.log('Error sending messages: ', error)
       } else if (response.body.error) {
           console.log('Error: ', response.body.error)
+          sendImageMessage(sender, "image")
       }
   })
 }

@@ -117,7 +117,7 @@ function sendImageMessage(sender, link) {
       "attachment": {
           "type": "image",
           "payload": {
-          "image_url":"https://openclipart.org/image/2400px/svg_to_png/222252/feels.png"
+          "url":"https://i.ytimg.com/vi/xUhAxwBvSUM/maxresdefault.jpg"
         }
       }
     }

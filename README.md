@@ -1,6 +1,6 @@
 # messengerbot
 
-This is a facebook messenger I made to run on a node server.
+This is a facebook messenger bot I made to run on a node server.
 
 ## Installation
 
